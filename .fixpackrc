@@ -1,0 +1,14 @@
+{
+  "sortToTop": [
+    "scripts",
+    "dependencies",
+    "devDependencies",
+    "browser",
+    "name",
+    "description",
+    "version",
+    "author",
+    "private",
+    "main"
+  ]
+}

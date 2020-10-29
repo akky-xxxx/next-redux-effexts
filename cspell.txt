@@ -1,0 +1,2 @@
+reduxjs
+camelcase
