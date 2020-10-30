@@ -4,6 +4,7 @@ import Server from "next/dist/next-server/server/next-server"
 import Routes from "next-routes"
 
 // import others
+import "../../services"
 import { createLogger } from "../../shared/utils/createLogger"
 
 // main
