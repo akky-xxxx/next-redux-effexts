@@ -3,7 +3,7 @@ import next from "next"
 
 // import others
 import { Common } from "../../shared/const/Common"
-import { Server } from "../../shared/const/Server2"
+import { Server } from "../../shared/const/Server"
 import { initializeExpressServer } from "../../modules/initializeExpressServer"
 import { createLogger } from "../../shared/utils/createLogger"
 
