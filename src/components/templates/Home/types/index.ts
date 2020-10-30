@@ -1,10 +1,10 @@
 // import
-import { RootState, Dispatch } from "../../../../store"
+import { RootState } from "../../../../store"
 
 // main
 type State = Pick<RootState, "todoItems">
-type Handlers = {
-  handleGetTodoItems: () => Dispatch
-}
+// TODO: 仮実装
+// eslint-disable-next-line @typescript-eslint/ban-types
+type Handlers = {}
 
 export type HomeProps = State & Handlers
