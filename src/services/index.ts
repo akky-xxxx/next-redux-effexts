@@ -8,8 +8,10 @@ import { TodoItems } from "./TodoItems"
 // import others
 import { ServiceInformation } from "./types"
 import { createLogger } from "../shared/utils/createLogger"
+import { Endpoints } from "../shared/const/Endpoints"
 
 // main
+const { XHR } = Endpoints
 const services = [TodoItems]
 const logger = createLogger(__filename)
 const middleware = Specter.createMiddleware({})
@@ -26,14 +28,14 @@ services.forEach((Service) => {
 })
 const serviceMessage = serviceInformation
   .map(
-    ({ serviceName, endpoint }) => `- ${serviceName} ( endpoint: ${endpoint} )`,
+    ({ serviceName, endpoint }) =>
+      `- ${serviceName} ( endpoint: ${XHR}/${endpoint} )`,
   )
   .join("\n")
 const message = `registered the below services.
 ${serviceMessage}`
 logger.trace(message)
 
-
-apiAggregation.use("/xhr", middleware)
+apiAggregation.use(XHR, middleware)
 
 export { apiAggregation }
