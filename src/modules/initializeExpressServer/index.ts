@@ -7,7 +7,6 @@ import Routes from "next-routes"
 import { apiAggregation } from "../../services"
 
 // import others
-import "../../services"
 import { createLogger } from "../../shared/utils/createLogger"
 
 // main
