@@ -30,7 +30,7 @@ export const SpinnerBar = styled.div<SpinnerBarProps>`
 
   &::after {
     background: ${COLOR_9999FF};
-    border-radius: 20%;
+    border-radius: 3px;
     content: " ";
     display: block;
     height: 18px;
