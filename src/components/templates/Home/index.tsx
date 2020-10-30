@@ -1,8 +1,9 @@
 // import node_modules
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 
 // import others
+import { HomeProps } from "./types"
 import { AnyObject } from "../../../shared/types/Common"
 
 // main
@@ -18,15 +19,22 @@ const data: AnyObject[] = [
 ]
 
 // main
-export const Home: FC = () => {
+export const Home: FC<HomeProps> = (props) => {
+  const { todoItems, handleGetTodoItems } = props
+
+  useEffect(() => {
+    if (!todoItems.data) handleGetTodoItems()
+  }, [todoItems.data])
+
+  if (!todoItems.data) return null
+
   return (
     <div>
       <h1>Home</h1>
       <ul>
-        {data.map((item) => {
-          const { id, text } = item
-          if (typeof id !== "string" || typeof text !== "string") return null
-          return <StyledLi key={id}>{text}</StyledLi>
+        {todoItems.data.todoItems.map((todoItem) => {
+          const { id, title } = todoItem
+          return <StyledLi key={id}>{title}</StyledLi>
         })}
       </ul>
     </div>

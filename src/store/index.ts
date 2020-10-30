@@ -31,3 +31,5 @@ export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector
 type AppDispatch = typeof store.dispatch
 export const useDispatch = (): ReturnType<typeof useReduxDispatch> =>
   useReduxDispatch<AppDispatch>()
+
+export type Dispatch = ReturnType<typeof useDispatch>
