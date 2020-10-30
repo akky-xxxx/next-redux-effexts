@@ -1,7 +1,7 @@
 // import node_modules
 import React, { FC } from "react"
 
-import { AnyObject } from "../../../shared/types/common"
+import { AnyObject } from "../../../shared/types/Common"
 
 const data: AnyObject[] = [
   {

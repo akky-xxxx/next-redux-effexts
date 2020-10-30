@@ -3,8 +3,8 @@ import { GET, APIDef, ResponseDef, Success200 } from "@agreed/typed"
 
 // types
 import { AgreedConverter } from "../../../../types"
-import { AnyObject } from "../../../../../../src/shared/types/common"
-import { TodoItem } from "../../../../../../src/shared/types/server/todoItems"
+import { AnyObject } from "../../../../../../src/shared/types/Common"
+import { TodoItem } from "../../../../../../src/shared/types/server/TodoItem"
 
 // main
 /**

@@ -2,7 +2,7 @@
 import { PUT, APIDef, ResponseDef, Success200 } from "@agreed/typed"
 
 // types
-import { AnyObject } from "../../../../../../../src/shared/types/common"
+import { AnyObject } from "../../../../../../../src/shared/types/Common"
 
 // main
 type Param = Partial<{
