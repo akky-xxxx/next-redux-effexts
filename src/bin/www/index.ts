@@ -1,22 +1,19 @@
 // import node_modules
-import express from "express"
 import next from "next"
-import Routes from "next-routes"
 
 // import others
-import { Common } from "../../shared/const/server/Common"
+import { Common } from "../../shared/const/Common"
+import { Server } from "../../shared/const/Server"
+import { initializeExpressServer } from "../../modules/initializeExpressServer"
 
 // main
-const { PORT } = Common
-const routes = new Routes()
-const app = express()
-const dev = process.env.NODE_ENV !== "production"
+const { IS_DEV } = Common
+const { PORT } = Server
 const nextApp = next({
-  dev,
+  dev: IS_DEV,
 })
+const expressServer = initializeExpressServer(nextApp)
 
-const handler = routes.getRequestHandler(nextApp)
 nextApp.prepare().then(() => {
-  app.use(handler)
-  app.listen(PORT)
+  expressServer.listen(PORT)
 })
