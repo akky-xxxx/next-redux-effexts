@@ -1,6 +1,6 @@
 export type TodoItem = {
   id: string
   title: string
-  description?: string
+  description: string
   isDone: boolean
 }
