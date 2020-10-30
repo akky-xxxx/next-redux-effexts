@@ -4,19 +4,6 @@ import styled from "styled-components"
 
 // import others
 import { HomeProps } from "./types"
-import { AnyObject } from "../../../shared/types/Common"
-
-// main
-const data: AnyObject[] = [
-  {
-    id: "1",
-    text: "text1",
-  },
-  {
-    id: "2",
-    text: "text2",
-  },
-]
 
 // main
 export const Home: FC<HomeProps> = (props) => {
