@@ -45,11 +45,16 @@ const slice = createSlice({
       }
     },
     failureRead: (state, action: { payload: ErrorPayload }) => {
+      const {
+        payload: { status, message },
+      } = action
+
       return {
         ...state,
         asyncInfo: {
           isLoading: false,
-          errorMessage: action.payload.message,
+          errorMessage: message,
+          status,
         },
       }
     },
