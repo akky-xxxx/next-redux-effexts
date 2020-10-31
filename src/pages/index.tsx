@@ -1,6 +1,7 @@
 // import node_modules
-import React from "react"
+import React, { useEffect } from "react"
 import { NextPage } from "next"
+import { useRouter } from "next/router"
 
 // import others
 import { Home } from "../components/templates/Home"
@@ -18,6 +19,13 @@ const HomeHoc: NextPage<HomeHocProps> = (hocProps) => {
   const pageProps = {
     todoItems,
   }
+  const router = useRouter()
+
+  useEffect(() => {
+    if (todoItems.asyncInfo.status === 403) {
+      router.replace("/error/403", router.pathname)
+    }
+  })
 
   return <Home {...pageProps} />
 }
