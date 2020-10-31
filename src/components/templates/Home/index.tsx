@@ -1,8 +1,9 @@
 // import node_modules
-import React, { FC, useEffect } from "react"
+import React, { FC } from "react"
 import styled from "styled-components"
 
 // import components
+import { ErrorMessage } from "../../atoms/ErrorMessage"
 import { Spinner } from "../../molecules/Spinner"
 
 // import others
@@ -10,14 +11,11 @@ import { HomeProps } from "./types"
 
 // main
 export const Home: FC<HomeProps> = (props) => {
-  const { todoItems, handleGetTodoItems } = props
-
-  useEffect(() => {
-    if (!todoItems.data) handleGetTodoItems()
-  }, [todoItems.data])
+  const { todoItems } = props
 
   return (
     <div>
+      <ErrorMessage message={todoItems.asyncInfo.errorMessage} />
       <h1>Home</h1>
       <Spinner isShow={todoItems.asyncInfo.isLoading}>
         {todoItems.data && (

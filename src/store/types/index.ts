@@ -3,5 +3,11 @@ export type StateWithService<T> = {
   asyncInfo: {
     isLoading: boolean
     errorMessage: string
+    status?: number
   }
+}
+
+export type ErrorPayload = {
+  status?: number
+  message: string
 }

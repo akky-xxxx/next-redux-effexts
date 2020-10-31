@@ -5,6 +5,12 @@ import { TodoItem as ClientTodoItem } from "../../../../../../shared/types/clien
 // main
 type Converter = (serverTodoItem: ServerTodoItem) => ClientTodoItem
 export const converter: Converter = (serverTodoItem) => {
-  const { id, title, description, is_done: isDone } = serverTodoItem
+  const {
+    id,
+    title,
+    description: _description,
+    is_done: isDone,
+  } = serverTodoItem
+  const description = _description || ""
   return { id, title, description, isDone }
 }

@@ -24,7 +24,11 @@ export class TodoItems extends BaseService {
       )
       return new Response({}, api2client(responseData))
     } catch (error) {
-      return Promise.reject(error)
+      const errorData = {
+        status: error.response.status || 500,
+        message: error.response.statusText || "Internal server error",
+      }
+      return Promise.reject(errorData)
     }
   }
 }
