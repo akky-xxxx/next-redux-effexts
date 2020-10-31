@@ -5,3 +5,8 @@ export type StateWithService<T> = {
     errorMessage: string
   }
 }
+
+export type ErrorPayload = {
+  status: number
+  message: string
+}
