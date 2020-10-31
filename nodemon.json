@@ -1,6 +1,6 @@
 {
   "watch": ["./src"],
-  "ignore": ["./src/components", "./src/pages"],
+  "ignore": ["./src/components", "./src/pages", "./src/store"],
   "ext": "ts",
   "exec": "ts-node --files ./src/bin/www/index.ts"
 }
