@@ -11,7 +11,7 @@ import { ServiceResponse } from "../../../services/TodoItems/types"
 // main
 const { TODO_ITEMS } = Service
 
-const initialState: StateWithService<ServiceResponse> = {
+export const initialState: StateWithService<ServiceResponse> = {
   data: null,
   asyncInfo: {
     isLoading: false,
