@@ -25,7 +25,7 @@ const middleware = [
   reduxEffectsSpecter(specterClient),
 ]
 
-export const store = configureStore({ reducer, middleware })
+const store = configureStore({ reducer, middleware })
 
 // types
 export type RootState = ReturnType<typeof reducer>
