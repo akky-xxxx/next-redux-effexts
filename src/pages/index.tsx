@@ -12,12 +12,8 @@ import { readTodoItems } from "../store/reducers/todoItems"
 type HomeHocProps = Pick<RootState, "todoItems">
 
 const HomeHoc: NextPage<HomeHocProps> = (hocProps) => {
-  const {
-    initialState: { todoItems },
-  } = hocProps
-  const pageProps = {
-    todoItems,
-  }
+  const { todoItems } = hocProps
+  const pageProps = { todoItems }
   const router = useRouter()
 
   useEffect(() => {
