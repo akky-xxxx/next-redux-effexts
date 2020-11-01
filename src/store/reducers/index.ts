@@ -1,9 +1,33 @@
 // import node_modules
-import { combineReducers } from "@reduxjs/toolkit"
+import { AnyAction, combineReducers } from "@reduxjs/toolkit"
+import { HYDRATE } from "next-redux-wrapper"
 
 // import reducers
-import { reducer as todoItems } from "./todoItems"
+import {
+  reducer as todoItemsReducer,
+  initialState as todoItemsInitialState,
+} from "./todoItems"
 
-export const reducer = combineReducers({
-  todoItems,
+const initialState = {
+  todoItems: todoItemsInitialState,
+}
+
+export const combinedReducer = combineReducers({
+  todoItems: todoItemsReducer,
 })
+
+type CombinedReducer = ReturnType<typeof combinedReducer>
+
+export const reducer = (
+  state: CombinedReducer = initialState,
+  action: AnyAction,
+): CombinedReducer => {
+  if (action.type === HYDRATE) {
+    return {
+      ...state,
+      ...action.payload,
+    }
+  }
+
+  return combinedReducer(state, action)
+}
