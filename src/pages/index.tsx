@@ -7,10 +7,9 @@ import { useRouter } from "next/router"
 import { Home } from "../components/templates/Home"
 import { wrapper, RootState } from "../store"
 import { readTodoItems } from "../store/reducers/todoItems"
-import { CreateInitialStateAtHoc } from "../shared/types/client/common"
 
 // main
-type HomeHocProps = CreateInitialStateAtHoc<Pick<RootState, "todoItems">>
+type HomeHocProps = Pick<RootState, "todoItems">
 
 const HomeHoc: NextPage<HomeHocProps> = (hocProps) => {
   const {
