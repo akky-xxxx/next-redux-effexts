@@ -4,6 +4,7 @@ import { Router } from "express"
 
 // import services
 import { TodoItems } from "./TodoItems"
+import { TodoItemsId } from "./TodoItemsId"
 
 // import others
 import { ServiceInformation } from "./types"
@@ -12,7 +13,7 @@ import { Endpoints } from "../shared/const/Endpoints"
 
 // main
 const { XHR } = Endpoints
-const services = [TodoItems]
+const services = [TodoItems, TodoItemsId]
 const logger = createLogger(__filename)
 const middleware = Specter.createMiddleware({})
 const apiAggregation = Router()
