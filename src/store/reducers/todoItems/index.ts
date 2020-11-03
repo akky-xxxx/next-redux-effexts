@@ -51,10 +51,10 @@ const slice = createSlice({
 
       return {
         ...state,
+        status,
         asyncInfo: {
           isLoading: false,
           errorMessage: message,
-          status,
         },
       }
     },

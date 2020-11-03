@@ -1,13 +1,15 @@
+// import
+import { ServiceStatusResponse } from "../../shared/types/Common"
+
+// main
 export type StateWithService<T> = {
   data: T | null
   asyncInfo: {
     isLoading: boolean
     errorMessage: string
-    status?: number
   }
-}
+} & ServiceStatusResponse
 
 export type ErrorPayload = {
-  status?: number
   message: string
-}
+} & Required<ServiceStatusResponse>
