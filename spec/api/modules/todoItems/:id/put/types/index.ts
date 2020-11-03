@@ -1,5 +1,12 @@
 // import node_modules
-import { PUT, APIDef, ResponseDef, Success200 } from "@agreed/typed"
+import {
+  PUT,
+  APIDef,
+  ResponseDef,
+  Success200,
+  Error403,
+  Capture,
+} from "@agreed/typed"
 
 // types
 import { AnyObject } from "../../../../../../../src/shared/types/Common"
@@ -17,10 +24,11 @@ type Param = Partial<{
  */
 export type Api = APIDef<
   PUT,
-  ["api", "todo-items", ":id"],
+  ["api", "todo-items", Capture<string>],
   AnyObject,
   AnyObject,
   Param,
   AnyObject,
-  ResponseDef<Success200, AnyObject>
+  | ResponseDef<Success200, AnyObject>
+  | ResponseDef<Error403, { message: "Forbidden" }>
 >
