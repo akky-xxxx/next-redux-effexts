@@ -21,6 +21,7 @@ export const initializeExpressServer: InitializeExpressServer = (
   logger.trace("start")
   const handler = routes.getRequestHandler(nextServer)
 
+  expressServer.use(express.json())
   expressServer.use(apiAggregation)
   expressServer.use(handler)
 
