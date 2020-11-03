@@ -3,4 +3,7 @@ export const Endpoints = {
   API: {
     TODO_ITEMS: "/api/todo-items",
   },
+  REDIRECT: {
+    ERROR: "/error",
+  },
 } as const
