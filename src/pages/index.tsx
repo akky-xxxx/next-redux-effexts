@@ -7,6 +7,7 @@ import { useRouter } from "next/router"
 import { Home } from "../components/templates/Home"
 import { wrapper, RootState } from "../store"
 import { readTodoItems } from "../store/reducers/todoItems"
+import { redirectAtServerSideProps } from "../modules/redirectAtServerSideProps"
 
 // main
 type HomeHocProps = Pick<RootState, "todoItems">
@@ -28,10 +29,13 @@ const HomeHoc: NextPage<HomeHocProps> = (hocProps) => {
 export const getServerSideProps = wrapper.getServerSideProps(
   async (context) => {
     const {
-      store: { dispatch },
+      store: { dispatch, getState },
+      res,
     } = context
 
     await dispatch(readTodoItems())
+    redirectAtServerSideProps(res, getState().todoItems)
   },
 )
+
 export default HomeHoc
