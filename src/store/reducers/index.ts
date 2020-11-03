@@ -7,13 +7,19 @@ import {
   reducer as todoItemsReducer,
   initialState as todoItemsInitialState,
 } from "./todoItems"
+import {
+  reducer as todoItemsIdReducer,
+  initialState as todoItemsIdInitialState,
+} from "./todoItemsId"
 
 const initialState = {
   todoItems: todoItemsInitialState,
+  todoItemsId: todoItemsIdInitialState,
 }
 
 export const combinedReducer = combineReducers({
   todoItems: todoItemsReducer,
+  todoItemsId: todoItemsIdReducer,
 })
 
 type CombinedReducer = ReturnType<typeof combinedReducer>
