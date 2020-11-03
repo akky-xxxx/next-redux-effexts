@@ -5,6 +5,7 @@ import styled from "styled-components"
 // import components
 import { ErrorMessage } from "../../atoms/ErrorMessage"
 import { Spinner } from "../../molecules/Spinner"
+import { TodoItem } from "./components/molecules/TodoItem"
 
 // import others
 import { HomeProps } from "./types"
@@ -21,8 +22,12 @@ export const Home: FC<HomeProps> = (props) => {
         {todoItems.data && (
           <ul>
             {todoItems.data.todoItems.map((todoItem) => {
-              const { id, title } = todoItem
-              return <StyledLi key={id}>{title}</StyledLi>
+              const { id } = todoItem
+              return (
+                <StyledLi key={id}>
+                  <TodoItem {...todoItem} />
+                </StyledLi>
+              )
             })}
           </ul>
         )}
