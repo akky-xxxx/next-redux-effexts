@@ -1,5 +1,5 @@
 // import node_modules
-import { GET, APIDef, ResponseDef, Success200 } from "@agreed/typed"
+import { GET, APIDef, ResponseDef, Success200, Error403 } from "@agreed/typed"
 
 // types
 import { AgreedConverter } from "../../../../types"
@@ -35,5 +35,6 @@ export type Api = APIDef<
   AnyObject,
   undefined,
   AnyObject,
-  ResponseDef<Success200, AgreedConverter<ResponseSuccess>>
+  | ResponseDef<Success200, AgreedConverter<ResponseSuccess>>
+  | ResponseDef<Error403, { message: "Forbidden" }>
 >

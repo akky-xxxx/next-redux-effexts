@@ -20,4 +20,20 @@ export const todoItemsGet: Api[] = [
       values: successData,
     },
   },
+  {
+    title: "TODO 一覧取得 - 403",
+    request: {
+      path: ["api", "todo-items"],
+      method: "GET",
+      body: undefined,
+      query: {},
+    },
+    response: {
+      status: 403,
+      body: {
+        message: "Forbidden",
+      },
+      values: successData,
+    },
+  },
 ]
