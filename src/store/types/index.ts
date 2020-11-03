@@ -1,14 +1,17 @@
 // import
-import { ServiceStatusResponse } from "../../shared/types/Common"
+import { ServiceStatusResponse, AnyObject } from "../../shared/types/Common"
 
 // main
-export type StateWithService<T> = {
-  data: T | null
+type AsyncInfo = {
   asyncInfo: {
     isLoading: boolean
     errorMessage: string
   }
-} & ServiceStatusResponse
+}
+
+export type StateWithService<T = undefined> = ServiceStatusResponse &
+  AsyncInfo &
+  (T extends undefined ? AnyObject : { data: T | null })
 
 export type ErrorPayload = {
   message: string
