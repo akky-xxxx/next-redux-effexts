@@ -5,7 +5,7 @@ import { specterRead } from "@specter/redux-effects-specter"
 
 // import others
 import { Service } from "../../../shared/const/Service"
-import { StateWithService, ErrorPayload } from "../../types"
+import { StateWithService, ErrorAction } from "../../types"
 import { ServiceResponse } from "../../../services/TodoItems/types"
 
 // main
@@ -44,17 +44,20 @@ const slice = createSlice({
         },
       }
     },
-    failureRead: (state, action: { payload: ErrorPayload }) => {
+    failureRead: (state, action: ErrorAction) => {
       const {
-        payload: { status, message },
+        payload: { response },
       } = action
+      const errorMessage = response
+        ? `${response.status}：${response.data.message}`
+        : "Internal Server Error."
 
       return {
         ...state,
-        status,
+        status: response?.status || 500,
         asyncInfo: {
           isLoading: false,
-          errorMessage: message,
+          errorMessage,
         },
       }
     },
