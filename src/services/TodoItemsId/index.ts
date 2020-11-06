@@ -6,7 +6,6 @@ import { BaseService } from "../BaseService"
 import { Service } from "../../shared/const/Service"
 import { Endpoints } from "../../shared/const/Endpoints"
 import { AnyObject } from "../../shared/types/Common"
-import { ServiceErrorResponse } from "../types"
 import { removeUndefinedKeys } from "../../shared/utils/removeUndefinedKeys"
 
 // main
@@ -28,16 +27,9 @@ export class TodoItemsId extends BaseService {
     req: Request<Record<string, string>, unknown, ThisRequest>,
   ): Promise<Response<AnyObject, unknown>> {
     const {
-      body: { id, title, description, isDone },
+      body: { id: _id, title, description, isDone },
     } = req
-
-    if (!id) {
-      const errorData: ServiceErrorResponse = {
-        status: 400,
-        message: "Bad Request",
-      }
-      return Promise.reject(errorData)
-    }
+    const id = _id || ""
 
     const requestBody = removeUndefinedKeys({
       id,
@@ -50,11 +42,7 @@ export class TodoItemsId extends BaseService {
       await this.axios.put(API.TODO_ITEMS_ID.replace("{:id}", id), requestBody)
       return new Response({}, {})
     } catch (error) {
-      const errorData: ServiceErrorResponse = {
-        status: error.response.status || 500,
-        message: error.response.statusText || "Internal server error",
-      }
-      return Promise.reject(errorData)
+      return Promise.reject(error)
     }
   }
 }
