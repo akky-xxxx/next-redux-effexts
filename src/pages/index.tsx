@@ -4,17 +4,15 @@ import { NextPage } from "next"
 
 // import others
 import { Home } from "../components/templates/Home"
-import { wrapper, RootState, useDispatch } from "../store"
+import { wrapper, useSelector, useDispatch } from "../store"
 import { readTodoItems } from "../store/reducers/todoItems"
 import { updateTodoItemsId } from "../store/reducers/todoItemsId"
 import { redirectAtServerSideProps } from "../modules/redirectAtServerSideProps"
 import { HomeProps } from "../components/templates/Home/types"
 
 // main
-type HomeHocProps = Pick<RootState, "todoItems">
-
-const HomeHoc: NextPage<HomeHocProps> = (hocProps) => {
-  const { todoItems } = hocProps
+const HomeHoc: NextPage = () => {
+  const todoItems = useSelector((state) => state.todoItems)
   const dispatch = useDispatch()
   const pageProps: HomeProps = {
     todoItems,
