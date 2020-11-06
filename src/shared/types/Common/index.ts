@@ -22,3 +22,21 @@ export type AnyFunction = (...args: any) => any
  * @description 引数なし、戻り値なし
  */
 export type NoArgVoidFunction = () => EmptyObject
+
+/**
+ * @typedef ThisError
+ * @description bff が client に返すエラー形式
+ */
+export type ThisError = {
+  message: string
+  code?: string
+  status: number
+  statusText: string
+  request: {
+    headers: AnyObject
+  }
+  response: {
+    headers: AnyObject
+    data: AnyObject
+  }
+}
