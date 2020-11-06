@@ -2,11 +2,13 @@
 import React from "react"
 import { NextPage } from "next"
 
+// import actions
+import { readTodoItems } from "../store/reducers/todoItems"
+import { updateTodoItemsId } from "../store/reducers/todoItemsId"
+
 // import others
 import { Home } from "../components/templates/Home"
 import { wrapper, useSelector, useDispatch } from "../store"
-import { readTodoItems } from "../store/reducers/todoItems"
-import { updateTodoItemsId } from "../store/reducers/todoItemsId"
 import { redirectAtServerSideProps } from "../modules/redirectAtServerSideProps"
 import { HomeProps } from "../components/templates/Home/types"
 
