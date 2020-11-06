@@ -1,5 +1,11 @@
-// import
-import { ServiceStatusResponse, AnyObject } from "../../shared/types/Common"
+import { AxiosError } from "axios"
+
+// import others
+import {
+  ServiceStatusResponse,
+  AnyObject,
+  ThisError,
+} from "../../shared/types/Common"
 
 // main
 type AsyncInfo = {
@@ -13,6 +19,6 @@ export type StateWithService<T = undefined> = ServiceStatusResponse &
   AsyncInfo &
   (T extends undefined ? AnyObject : { data: T | null })
 
-export type ErrorPayload = {
-  message: string
-} & Required<ServiceStatusResponse>
+export type ErrorAction = {
+  payload: AxiosError<ThisError>
+}
