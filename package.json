@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "agreed": "agreed-server --path ./spec/api/index.ts --port 3001",
+    "agreed": "agreed-server --path ./spec/api/index.ts --port 3001 -l",
     "agreed:doc": "agreed-ui --path spec/api/index.ts --port 3002",
     "build": "next build",
     "check-all": "run-p lint spell-check type-check test",
