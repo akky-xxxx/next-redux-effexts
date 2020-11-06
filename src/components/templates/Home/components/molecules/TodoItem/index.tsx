@@ -8,6 +8,7 @@ import { useTodoItem } from "./modules/useTodoItem"
 
 // main
 export const TodoItem: FC<TodoItemProps> = (props) => {
+  const { handleUpdateTodoItemsId } = props
   const {
     id,
     title,
@@ -56,7 +57,9 @@ export const TodoItem: FC<TodoItemProps> = (props) => {
         </li>
       </ul>
       <div>
-        <button type="button">保存</button>
+        <button type="button" onClick={handleUpdateTodoItemsId}>
+          保存
+        </button>
       </div>
     </Fragment>
   )

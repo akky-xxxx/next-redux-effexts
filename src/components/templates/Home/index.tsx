@@ -12,20 +12,23 @@ import { HomeProps } from "./types"
 
 // main
 export const Home: FC<HomeProps> = (props) => {
-  const { todoItems } = props
+  const { todoItems, handleUpdateTodoItemsId } = props
 
   return (
     <div>
       <ErrorMessage message={todoItems.asyncInfo.errorMessage} />
       <h1>Home</h1>
       <Spinner isShow={todoItems.asyncInfo.isLoading}>
-        {todoItems.data && (
+        {todoItems.data && todoItems.data.todoItems && (
           <ul>
             {todoItems.data.todoItems.map((todoItem) => {
               const { id } = todoItem
               return (
                 <StyledLi key={id}>
-                  <TodoItem {...todoItem} />
+                  <TodoItem
+                    {...todoItem}
+                    handleUpdateTodoItemsId={handleUpdateTodoItemsId}
+                  />
                 </StyledLi>
               )
             })}
