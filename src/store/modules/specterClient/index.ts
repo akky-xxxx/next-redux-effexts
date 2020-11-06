@@ -8,4 +8,5 @@ import { Endpoints } from "../../../shared/const/Endpoints"
 const { XHR } = Endpoints
 export const specterClient = new Client({
   base: XHR,
+  validateStatus: (status: number) => status < 400,
 })
