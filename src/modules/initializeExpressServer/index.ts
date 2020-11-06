@@ -5,6 +5,7 @@ import Routes from "next-routes"
 
 // import middleware
 import { apiAggregation } from "../../services"
+import { createErrorHandler } from "./middleware/createErrorHandler"
 
 // import others
 import { createLogger } from "../../shared/utils/createLogger"
@@ -24,6 +25,8 @@ export const initializeExpressServer: InitializeExpressServer = (
   expressServer.use(express.json())
   expressServer.use(apiAggregation)
   expressServer.use(handler)
+
+  expressServer.use(createErrorHandler())
 
   logger.trace("done")
   return expressServer
