@@ -11,11 +11,12 @@ type Handler =
   | "handleChangeTitle"
   | "handleChangeDescription"
   | "handleChangeIsDone"
+type UseTodoItemArgs = Omit<TodoItemProps, "handleUpdateTodoItemsId">
 type UseTodoItem = (
   args: TodoItemProps,
-) => TodoItemProps & Record<Handler, HandleChange>
+) => UseTodoItemArgs & Record<Handler, HandleChange>
 export const useTodoItem: UseTodoItem = (args) => {
-  const [state, setState] = useState<TodoItemProps>(args)
+  const [state, setState] = useState<UseTodoItemArgs>(args)
   const { id, title, description, isDone } = state
   const handleChangeId: HandleChange = useCallback(
     (event) => {
