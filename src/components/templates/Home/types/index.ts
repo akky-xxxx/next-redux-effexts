@@ -1,10 +1,13 @@
 // import
 import { RootState } from "../../../../store"
+import { AnyFunction } from "../../../../shared/types/Common"
 
 // main
 type State = Pick<RootState, "todoItems">
-// TODO: 仮実装
-// eslint-disable-next-line @typescript-eslint/ban-types
-type Handlers = {}
+
+type Handlers = {
+  // TODO: 仮実装
+  handleUpdateTodoItemsId: AnyFunction
+}
 
 export type HomeProps = State & Handlers
