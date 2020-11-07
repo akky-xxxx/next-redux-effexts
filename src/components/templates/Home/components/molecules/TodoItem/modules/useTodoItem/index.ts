@@ -33,7 +33,7 @@ export const useTodoItem: UseTodoItem = (args) => {
         id: value,
       })
     },
-    [title, description, isDone],
+    [id, title, description, isDone],
   )
   const handleChangeTitle: HandleChange = useCallback(
     (event) => {
@@ -57,14 +57,14 @@ export const useTodoItem: UseTodoItem = (args) => {
         description: value,
       })
     },
-    [id, title, isDone],
+    [id, title, description, isDone],
   )
   const handleChangeIsDone: HandleChange = useCallback(() => {
     setState({
       ...state,
       isDone: !state.isDone,
     })
-  }, [id, title, description])
+  }, [id, title, description, isDone])
 
   const handleUpdateTodoItemsId: () => void = useCallback(() => {
     _handleUpdateTodoItemsId({ id, title, description, isDone })
