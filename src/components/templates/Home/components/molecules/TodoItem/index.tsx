@@ -8,7 +8,6 @@ import { useTodoItem } from "./modules/useTodoItem"
 
 // main
 export const TodoItem: FC<TodoItemProps> = (props) => {
-  const { handleUpdateTodoItemsId } = props
   const {
     id,
     title,
@@ -18,6 +17,7 @@ export const TodoItem: FC<TodoItemProps> = (props) => {
     handleChangeTitle,
     handleChangeDescription,
     handleChangeIsDone,
+    handleUpdateTodoItemsId,
   } = useTodoItem(props)
 
   return (

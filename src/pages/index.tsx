@@ -23,7 +23,7 @@ const HomeHoc: NextPage = () => {
     todoItems,
     todoItemsId,
     handleReadTodoItems: () => dispatch(readTodoItems()),
-    handleUpdateTodoItemsId: () => dispatch(updateTodoItemsId()),
+    handleUpdateTodoItemsId: (args) => dispatch(updateTodoItemsId(args)),
   }
 
   return <Home {...pageProps} />

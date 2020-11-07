@@ -1,5 +1,5 @@
 // import
-import { NoArgVoidFunction } from "../../../../../../../shared/types/Common"
+import { HandleUpdateTodoItemsId } from "../../../../types"
 
 // main
 export type TodoItemProps = {
@@ -7,5 +7,5 @@ export type TodoItemProps = {
   title: string
   description: string
   isDone: boolean
-  handleUpdateTodoItemsId: NoArgVoidFunction
+  handleUpdateTodoItemsId: HandleUpdateTodoItemsId
 }

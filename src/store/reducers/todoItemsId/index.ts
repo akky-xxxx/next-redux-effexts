@@ -64,8 +64,22 @@ const {
   reducer,
 } = slice
 
-const updateTodoItemsId = (): ReturnType<typeof steps> => {
-  return steps(updateReady(), specterUpdate(TODO_ITEMS_ID), [
+export type UpdateTodoItemsIdArgs = {
+  id: string
+  title?: string
+  description?: string
+  isDone?: boolean
+}
+
+type UpdateTodoItemsId = (
+  args: UpdateTodoItemsIdArgs,
+) => ReturnType<typeof steps>
+
+const updateTodoItemsId: UpdateTodoItemsId = (args) => {
+  const request = {
+    body: args,
+  }
+  return steps(updateReady(), specterUpdate(TODO_ITEMS_ID, request), [
     successUpdate,
     failureUpdate,
   ])

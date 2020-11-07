@@ -3,6 +3,7 @@ import { useState, useCallback, ChangeEvent } from "react"
 
 // import
 import { TodoItemProps } from "../../types"
+import { NoArgVoidFunction } from "../../../../../../../../shared/types/Common"
 
 // main
 type HandleChange = (event: ChangeEvent<HTMLInputElement>) => void
@@ -14,8 +15,12 @@ type Handler =
 type UseTodoItemArgs = Omit<TodoItemProps, "handleUpdateTodoItemsId">
 type UseTodoItem = (
   args: TodoItemProps,
-) => UseTodoItemArgs & Record<Handler, HandleChange>
+) => UseTodoItemArgs &
+  Record<Handler, HandleChange> & {
+    handleUpdateTodoItemsId: NoArgVoidFunction
+  }
 export const useTodoItem: UseTodoItem = (args) => {
+  const { handleUpdateTodoItemsId: _handleUpdateTodoItemsId } = args
   const [state, setState] = useState<UseTodoItemArgs>(args)
   const { id, title, description, isDone } = state
   const handleChangeId: HandleChange = useCallback(
@@ -61,6 +66,10 @@ export const useTodoItem: UseTodoItem = (args) => {
     })
   }, [id, title, description])
 
+  const handleUpdateTodoItemsId: () => void = useCallback(() => {
+    _handleUpdateTodoItemsId({ id, title, description, isDone })
+  }, [id, title, description, isDone])
+
   return {
     id,
     title,
@@ -70,5 +79,6 @@ export const useTodoItem: UseTodoItem = (args) => {
     handleChangeTitle,
     handleChangeDescription,
     handleChangeIsDone,
+    handleUpdateTodoItemsId,
   }
 }
