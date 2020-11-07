@@ -22,7 +22,7 @@ export const Navigation: FC = () => {
         {menu.map((menuItem) => {
           const { href, label } = menuItem
           return (
-            <StyledLi>
+            <StyledLi key={label}>
               <Link href={href}>{label}</Link>
             </StyledLi>
           )
