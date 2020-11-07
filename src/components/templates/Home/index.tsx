@@ -12,12 +12,17 @@ import { HomeProps } from "./types"
 
 // main
 export const Home: FC<HomeProps> = (props) => {
-  const { todoItems, handleUpdateTodoItemsId } = props
+  const { todoItems, handleReadTodoItems, handleUpdateTodoItemsId } = props
 
   return (
     <div>
       <ErrorMessage message={todoItems.asyncInfo.errorMessage} />
       <h1>Home</h1>
+      <div>
+        <button type="button" onClick={handleReadTodoItems}>
+          再読込
+        </button>
+      </div>
       <Spinner isShow={todoItems.asyncInfo.isLoading}>
         {todoItems.data && todoItems.data.todoItems && (
           <ul>

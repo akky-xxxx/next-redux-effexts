@@ -7,6 +7,7 @@ type State = Pick<RootState, "todoItems">
 
 type Handlers = {
   // TODO: 仮実装
+  handleReadTodoItems: AnyFunction
   handleUpdateTodoItemsId: AnyFunction
 }
 

@@ -18,6 +18,7 @@ const HomeHoc: NextPage = () => {
   const dispatch = useDispatch()
   const pageProps: HomeProps = {
     todoItems,
+    handleReadTodoItems: () => dispatch(readTodoItems()),
     handleUpdateTodoItemsId: () => dispatch(updateTodoItemsId()),
   }
 
