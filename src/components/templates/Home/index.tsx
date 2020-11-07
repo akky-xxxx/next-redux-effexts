@@ -10,12 +10,12 @@ import { TodoItem } from "./components/molecules/TodoItem"
 
 // import others
 import { HomeProps } from "./types"
+import { useHome } from "./modules/useHome"
 
 // main
 export const Home: FC<HomeProps> = (props) => {
-  const { todoItems, todoItemsId, handleReadTodoItems, handleUpdateTodoItemsId } = props
-  const errorMessage = todoItems.asyncInfo.errorMessage || todoItemsId.asyncInfo.errorMessage
-  const isShowSpinner = todoItems.asyncInfo.isLoading || todoItemsId.asyncInfo.isLoading
+  const { todoItems, handleReadTodoItems, handleUpdateTodoItemsId } = props
+  const { errorMessage, isShowSpinner } = useHome(props)
 
   return (
     <div>
