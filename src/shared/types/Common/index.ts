@@ -21,7 +21,7 @@ export type AnyFunction = (...args: any) => any
  * @typedef NoArgVoidFunction
  * @description 引数なし、戻り値なし
  */
-export type NoArgVoidFunction = () => EmptyObject
+export type NoArgVoidFunction = () => void
 
 /**
  * @typedef ThisError
