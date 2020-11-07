@@ -5,6 +5,7 @@ import styled from "styled-components"
 // import components
 import { ErrorMessage } from "../../atoms/ErrorMessage"
 import { Spinner } from "../../molecules/Spinner"
+import { Navigation } from "../../molecules/Navigation"
 import { TodoItem } from "./components/molecules/TodoItem"
 
 // import others
@@ -18,6 +19,7 @@ export const Home: FC<HomeProps> = (props) => {
     <div>
       <ErrorMessage message={todoItems.asyncInfo.errorMessage} />
       <h1>Home</h1>
+      <Navigation />
       <div>
         <button type="button" onClick={handleReadTodoItems}>
           再読込
