@@ -14,10 +14,14 @@ import { HomeProps } from "../components/templates/Home/types"
 
 // main
 const HomeHoc: NextPage = () => {
-  const todoItems = useSelector((state) => state.todoItems)
+  const { todoItems, todoItemsId } = useSelector((state) => ({
+    todoItems: state.todoItems,
+    todoItemsId: state.todoItemsId,
+  }))
   const dispatch = useDispatch()
   const pageProps: HomeProps = {
     todoItems,
+    todoItemsId,
     handleReadTodoItems: () => dispatch(readTodoItems()),
     handleUpdateTodoItemsId: () => dispatch(updateTodoItemsId()),
   }

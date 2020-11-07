@@ -13,11 +13,13 @@ import { HomeProps } from "./types"
 
 // main
 export const Home: FC<HomeProps> = (props) => {
-  const { todoItems, handleReadTodoItems, handleUpdateTodoItemsId } = props
+  const { todoItems, todoItemsId, handleReadTodoItems, handleUpdateTodoItemsId } = props
+  const errorMessage = todoItems.asyncInfo.errorMessage || todoItemsId.asyncInfo.errorMessage
+  const isShowSpinner = todoItems.asyncInfo.isLoading || todoItemsId.asyncInfo.isLoading
 
   return (
     <div>
-      <ErrorMessage message={todoItems.asyncInfo.errorMessage} />
+      <ErrorMessage message={errorMessage} />
       <h1>Home</h1>
       <Navigation />
       <div>
@@ -25,7 +27,7 @@ export const Home: FC<HomeProps> = (props) => {
           再読込
         </button>
       </div>
-      <Spinner isShow={todoItems.asyncInfo.isLoading}>
+      <Spinner isShow={isShowSpinner}>
         {todoItems.data && todoItems.data.todoItems && (
           <ul>
             {todoItems.data.todoItems.map((todoItem) => {

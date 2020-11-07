@@ -3,7 +3,7 @@ import { RootState } from "../../../../store"
 import { AnyFunction } from "../../../../shared/types/Common"
 
 // main
-type State = Pick<RootState, "todoItems">
+type State = Pick<RootState, "todoItems" | "todoItemsId">
 
 type Handlers = {
   // TODO: 仮実装
